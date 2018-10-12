@@ -72,9 +72,9 @@ FILE* openFile(char* fileName) {
 	fp = fopen(fileName, "r");
 	
 	if (fp == NULL) {
-      perror("Error opening the file.\n");
-      exit(EXIT_FAILURE);
-    }
+		perror("Error opening the file.\n");
+		exit(EXIT_FAILURE);
+	}
 	
 	return fp;
 }
@@ -104,19 +104,17 @@ vct* parseVCDFile(char* fileName, char signalIdentifier) {
 
 	while ((fgets(line, sizeof(line), fp) != NULL) && (resultList == NULL)){
 		next = parseLine(line, signalIdentifier);
-        if(next != NULL) {
+		if(next != NULL) {
 			resultList = next;
 		}
 	}
 	
 	while (fgets(line, sizeof(line), fp) != NULL){
-        next->next = parseLine(line, signalIdentifier);
-        if(next->next != NULL) {
+		next->next = parseLine(line, signalIdentifier);
+		if(next->next != NULL) {
 			next = next->next;
 		}
-		
-    }
-	
+	}
 	fclose(fp);
 	
 	return resultList;
