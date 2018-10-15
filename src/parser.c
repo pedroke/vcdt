@@ -24,7 +24,7 @@
 #include "parser.h"
 
 
-char* getValue(char* line, int index, char* result) {
+static char* getValue(char* line, int index, char* result) {
 	int i = 0;
 	
 	while(line[index] != ' ') {
@@ -34,7 +34,7 @@ char* getValue(char* line, int index, char* result) {
 	return result;
 }
 
-vct* parseLine(char* line, char signalIdentifier) {
+static vct* parseLine(char* line, char signalIdentifier) {
 	char c = line[0];
 	char time[12];
 	char value[12];
@@ -67,7 +67,7 @@ vct* parseLine(char* line, char signalIdentifier) {
 	return NULL;
 }
 
-FILE* openFile(char* fileName) {
+static FILE* openFile(char* fileName) {
 	FILE *fp;
 	fp = fopen(fileName, "r");
 	
@@ -118,4 +118,8 @@ vct* parseVCDFile(char* fileName, char signalIdentifier) {
 	fclose(fp);
 	
 	return resultList;
+}
+
+int main() {
+	return 0;
 }
