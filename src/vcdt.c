@@ -1,9 +1,12 @@
 #include <stdio.h>
 #include <unistd.h>
+#include <stdlib.h>
+#include <string.h>
 #include "parser.h"
 #include "driver.h"
 
 static drivert* currentDriver;
+static int lastTimestamp = 0;
 
 static void printHelp() {
 	printf("Usage: vcdt file_name -S signal_identifier -D driver_id\n");
@@ -19,18 +22,45 @@ static void printHelp() {
 	}
 }
 
-int transmit(long time, int value) {
-	int result = currentDriver->transmit(value);
-	sleep(time);
-	return result;
+static void gap(long time) {
+	sleep(time - lastTimestamp);
+	lastTimestamp = time;
 }
 
-int processArguments(int argc, char **argv) {
-	char* fileName; // TODO
-	char signalIdentifier; //TODO
+static int transmit(long time, int value) {
+	gap(time);
+	return currentDriver->transmit(value);
+}
+
+static char* getFileName(int argc, char **argv) {
+	return argv[1];
+}
+
+static char getSignalIdentifier(int argc, char **argv) {
+	for(int i=0; i < argc; i++) {
+		if(strcmp(argv[i], "-S") == 0) {
+			return argv[i+1][0];
+		}
+	}
+}
+
+static void setCurrentDriver(int argc, char **argv) {
+	for(int i=0; i < argc; i++) {
+		if(strcmp(argv[i], "-D") == 0) {
+			getDriverById(atoi(argv[i+1]));
+		}
+	}
+}
+
+static int processArguments(int argc, char **argv) {
+	setCurrentDriver(argc, argv);
+	vct* parsed = parseVCDFile(getFileName(argc, argv), getSignalIdentifier(argc, argv));
 	
-	vct* parsed = parseVCDFile(fileName, signalIdentifier);
-	return handleResult(parsed, transmit);
+	currentDriver->init();
+	int result = handleResult(parsed, transmit);
+	currentDriver->deinit();
+	
+	return result;
 }
 
 int main(int argc, char **argv) {
