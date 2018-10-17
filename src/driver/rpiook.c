@@ -52,6 +52,7 @@ static void deinit() {
 drivert rpiook = {
 	.id = 1,
 	.name = "rpiook",
+	.description = "Driver for raspberry pi utilizing pigpio library to transmit to cheap OOK transmitter",
 	.init = init,
 	.deinit = deinit,
 	.transmit = transmit

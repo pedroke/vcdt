@@ -38,6 +38,7 @@ static void deinit() {
 drivert dummy = {
 	.id = 2,
 	.name = "dummy",
+	.description = "Dummy transmitter driver intended as template and for testing purposes",
 	.init = init,
 	.deinit = deinit,
 	.transmit = transmit

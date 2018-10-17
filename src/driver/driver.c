@@ -22,13 +22,13 @@
 #include <string.h>
 #include "driver.h"
 
-drivert* drivers[] = {
+static drivert* drivers[] = {
 #define DECL(name) &name,
 	DRIVERS
 #undef DECL
 };
 
-int driversCount = sizeof drivers/sizeof drivers[0];
+static int driversCount = sizeof drivers/sizeof drivers[0];
 
 drivert* getDriverById(int id) {
 	int i=0;
@@ -52,4 +52,12 @@ drivert* getDriverByName(char* name) {
 	}
 	
 	return NULL;
+}
+
+drivert** getDrivers() {
+	return drivers;
+}
+
+int getDriverCount() {
+	return driversCount;
 }
