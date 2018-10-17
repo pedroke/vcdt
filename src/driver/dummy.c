@@ -1,6 +1,5 @@
 /*
- * Transmitter driver for raspberry pi utilizing pigpio library to
- * transmit to cheap OOK transmitter connected to RPi I/O ports.
+ * Dummy transmitter driver intended as template and for testing purposes
  * 
  * 
  * Copyright (C) 2018 by Peter Drozda
@@ -20,38 +19,25 @@
  */
  
 #include <stdio.h>
-#include <pigpio.h>
 #include "driver.h"
 
-#define TX_PIN 22
-
 static int init() {
-	int result;
-	
-	result = gpioInitialise();
-	if (result != 0) {
-		return result;
-	}
-	
-	result = gpioSetMode(TX_PIN, PI_OUTPUT);
-	if(result != 0) {
-		return result;
-	}
-	
+	printf("Initialization of dummy driver.\n");
 	return 0;
 }
 
 static int transmit(int value) {
-	return gpioWrite(TX_PIN, value);
+	printf("Dummy transmit: %d\n", value);
+	return 0;
 }
 
 static void deinit() {
-	gpioTerminate();
+	printf("Deinitialization of dummy driver.\n");	
 }
 
-drivert rpiook = {
-	.id = 1,
-	.name = "rpiook",
+drivert dummy = {
+	.id = 2,
+	.name = "dummy",
 	.init = init,
 	.deinit = deinit,
 	.transmit = transmit

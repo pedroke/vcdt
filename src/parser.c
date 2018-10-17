@@ -121,5 +121,6 @@ vct* parseVCDFile(char* fileName, char signalIdentifier) {
 }
 
 int main() {
+	// TODO to be removed
 	return 0;
 }
