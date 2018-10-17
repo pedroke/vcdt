@@ -102,6 +102,7 @@ vct* parseVCDFile(char* fileName, char signalIdentifier) {
 	vct* resultList = NULL;
 	vct* next = NULL;
 
+	printf("Parsing vcd file:%s, looking for signal:%c\n", fileName, signalIdentifier);
 	while ((fgets(line, sizeof(line), fp) != NULL) && (resultList == NULL)){
 		next = parseLine(line, signalIdentifier);
 		if(next != NULL) {
