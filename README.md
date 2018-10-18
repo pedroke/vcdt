@@ -12,7 +12,7 @@ Usage:
 
 Example usage:
 
-    vcdt remoteswitch1.vcd -D 1 -S \\'
+    vcdt remoteswitch1.vcd -D 1 -S \'
 
 How to generate .vcd by rtl_433?
 
