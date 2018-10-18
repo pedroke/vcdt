@@ -90,6 +90,7 @@ static int processArguments(int argc, char **argv) {
 int main(int argc, char **argv) {
 	if(argc < 6) {
 		printHelp();
+	} else {
+		return processArguments(argc, argv);
 	}
-	return processArguments(argc, argv);
 }
