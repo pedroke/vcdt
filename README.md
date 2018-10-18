@@ -22,3 +22,10 @@ Example usage:
     rtl_433 -F json -R device_id -w output.vcd
 
 For more details, please see https://github.com/merbanan/rtl_433/
+
+##Build and installation
+
+    cd src
+    make
+    make install
+
