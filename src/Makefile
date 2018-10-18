@@ -1,6 +1,6 @@
 all :
 
-OUTDIR := ../output
+OUTDIR := ../build
 IDIR =../include
 CFLAGS=-I$(IDIR)
 
