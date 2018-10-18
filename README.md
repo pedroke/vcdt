@@ -4,6 +4,7 @@ The original purpose of this project is to enable re-transmission of RF signals 
 VCDT makes it possible to utilize I/O ports to connect different types of RF transmitters and transmit signal recoreded by rtl_433 in .vcd format. Driver architecture enables easy extensibility by providing possibility to implement additional drivers for different transmitters and I/O interfaces.
 
 Usage:
+
     vcdt vcd_file -D driver_id -S signal_id
 
 - vcd_file: .vcd file generated e.g. by rtl_433 by capturing the signal
