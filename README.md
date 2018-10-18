@@ -13,3 +13,11 @@ vcdt vcd_file -D driver_id -S signal_id
 Example usage:
 
 vcdt remoteswitch1.vcd -D 1 -S \\'
+
+How to generate .vcd by rtl_433?
+
+Example usage:
+
+rtl_433 -F json -R device_id -w output.vcd
+
+For more details, please see https://github.com/merbanan/rtl_433/
