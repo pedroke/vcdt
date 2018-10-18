@@ -21,8 +21,6 @@
 #ifndef DRIVER_H
 #define DRIVER_H
 
-#define MAX_DRIVERS 10
-
 typedef struct driver {
     int id;
     char name[10];
