@@ -28,7 +28,7 @@ typedef struct vc {
     struct vc* next;
 } vct;
 
-/* 
+/** 
  * Parses the provided .vcd file, extracting timing and values for signal
  * identified by signalIdentifier.
  * 
@@ -38,7 +38,7 @@ typedef struct vc {
  */
 vct* parseVCDFile(char* fileName, char signalIdentifier);
 
-/*
+/**
  * Iterates the result of parser and executes callback function on each entry.
  * Callback function should return 0 if finished successfuly and any other value on error in
  * order to break the iteration and return the error code immediately.
