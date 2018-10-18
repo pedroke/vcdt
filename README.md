@@ -12,4 +12,4 @@ vcdt vcd_file -D driver_id -S signal_id
 
 Example usage:
 
-vcdt remoteswitch1.vcd -D 1 -S \'
+vcdt remoteswitch1.vcd -D 1 -S \\'
