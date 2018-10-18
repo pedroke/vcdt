@@ -23,7 +23,7 @@ Example usage:
 
 For more details, please see https://github.com/merbanan/rtl_433/
 
-##Build and installation
+## Build and installation
 
     cd src
     make
